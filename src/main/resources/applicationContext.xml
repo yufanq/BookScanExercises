@@ -37,7 +37,9 @@
 			<ref local="dataSource" />
 		</property>
 		<!-- 配置实体所在的包 可以直接使用类名 操作 而不需要写权限定名 -->
+		<property name="mapperLocations" value="classpath:/com/mapper/*Mapper.xml"></property>
 		<!-- Mapper文件放置的文件夹 -->
+		<property name="typeAliasesPackage" value="com.entity"/>
 	</bean>
 	<bean id="mapperConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/> 

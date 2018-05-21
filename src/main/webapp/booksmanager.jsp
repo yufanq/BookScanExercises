@@ -108,10 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
                         </p>
                         
-                        <p>
-                        	<label>章节名称</label>
-                            <span class="field"><input type="text" name="lastname" id="lastname" class="longinput" /></span>
-                        </p>
+                   
                         <p class="stdformbutton">
                         	<button class="submit radius2">提交</button>
                         </p>

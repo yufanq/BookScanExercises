@@ -44,12 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="centercontent">
     
         <div class="pageheader">
-            <h1 class="pagetitle">试卷</h1>
+            <h1 class="pagetitle">自定义试卷</h1>
             <span class="pagedesc">The content below are loaded using inline data</span>
             
             <ul class="hornav">
-                <li class="current"><a href="#basicform">试卷列表</a></li>
-              
+                <li class="current"><a href="#basicform">自定义试卷列表</a></li>
+                <li><a href="#validation">自定义试卷添加</a></li>
             </ul>
         </div><!--pageheader-->
         
@@ -68,16 +68,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <th class="head0">试卷id</th>
-                                            <th class="head1">试卷名称</th>
-                                            <th class="head0" colspan="3">操作</th>
+                                            <th class="head0">自定义试卷id</th>
+                                            <th class="head1">自定义试卷名称</th>
+                                            <th class="head0" colspan="2">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>01/12/12</td>
                                             <td>10</td>
-                                            <td><a>生成试题</a></td>
                                             <td><a>修改</a></td>
                                             <td><a>删除</a></td>
                                         </tr>
@@ -101,7 +100,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <br />
       </div><!--subcontent-->
          
-   
+         
+            <div id="validation" class="subcontent" style="display: none">
+                   <form class="stdform" action="" method="post">
+                                             <p>
+                        	<label>专业</label>
+                           <span class="formwrapper">
+                             <select data-placeholder="选择专业...." class="chzn-select" multiple="multiple" style="width:350px;" tabindex="4">
+                                    <option value="United States">United States</option> 
+                               </select>
+                           </span>
+                             </p>
+                  
+                          <p>
+                        	<label>自定义试卷名称</label>
+                            <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
+                        </p>
+                        <p class="stdformbutton">
+                        	<button class="submit radius2">提交</button>
+                        </p>
+                  </form>
+         </div><!--subcontent-->
+        
         </div><!--contentwrapper-->
         
 	</div><!-- centercontent -->

@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<ul class="headermenu">
         	<li class="current"><a href="index.jsp"><span class="icon icon-flatscreen"></span>首页</a></li>
             <li><a href="adminmanager.jsp"><span class="icon icon-pencil"></span>权限管理</a></li>
-            <li><a href="testpapers.jsp"><span class="icon icon-message"></span>试卷 	管理</a></li>
+            <li><a href="testpapers.jsp"><span class="icon icon-message"></span>试卷管理</a></li>
             <li><a href="reports.html"><span class="icon icon-chart"></span>统计报表</a></li>
         </ul>
       

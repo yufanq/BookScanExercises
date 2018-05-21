@@ -40,16 +40,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body class="withvernav">
 
 <div class="bodywrapper">
-    <jsp:include page="testpapersnacigation.jsp"/>
+    <jsp:include page="indexnavigation.jsp"/>
     <div class="centercontent">
     
         <div class="pageheader">
-            <h1 class="pagetitle">试卷</h1>
+            <h1 class="pagetitle">填空题</h1>
             <span class="pagedesc">The content below are loaded using inline data</span>
             
             <ul class="hornav">
-                <li class="current"><a href="#basicform">试卷列表</a></li>
-              
+                <li class="current"><a href="#basicform">填空题列表</a></li>
+                <li><a href="#validation">填空题添加</a></li>
             </ul>
         </div><!--pageheader-->
         
@@ -68,16 +68,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <th class="head0">试卷id</th>
-                                            <th class="head1">试卷名称</th>
-                                            <th class="head0" colspan="3">操作</th>
+                                            <th class="head0">填空题id</th>
+                                            <th class="head1">填空题名称</th>
+                                            <th class="head0" colspan="2">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>01/12/12</td>
                                             <td>10</td>
-                                            <td><a>生成试题</a></td>
+                                         
                                             <td><a>修改</a></td>
                                             <td><a>删除</a></td>
                                         </tr>
@@ -101,7 +101,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <br />
       </div><!--subcontent-->
          
-   
+         
+            <div id="validation" class="subcontent" style="display: none">
+                   <form class="stdform" action="" method="post">
+                        <p>
+                        	<label>书名</label>
+                 			    <span class="formwrapper">
+                            	<select data-placeholder="选择书本..." class="chzn-select" style="width:350px;" tabindex="2">
+                           </select>
+                           </span>
+                               </p>
+                        
+                        <p>
+                        	<label>章节名称</label>
+                           <span class="formwrapper">
+                            	<select data-placeholder="选择章节..." class="chzn-select" style="width:350px;" tabindex="2">
+                           </select>
+                           </span>
+                             </p>
+                                   <p>
+                        	<label>知识点名称</label>
+                           <span class="formwrapper">
+                            	<select data-placeholder="选择知识点..." class="chzn-select" style="width:350px;" tabindex="2">
+                           </select>
+                           </span>
+                             </p>
+                          <p>
+                        	<label>填空题名称</label>
+                            <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
+                        </p>
+                        <p class="stdformbutton">
+                        	<button class="submit radius2">提交</button>
+                        </p>
+                  </form>
+         </div><!--subcontent-->
+        
         </div><!--contentwrapper-->
         
 	</div><!-- centercontent -->

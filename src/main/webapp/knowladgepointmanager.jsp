@@ -48,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <span class="pagedesc">The content below are loaded using inline data</span>
             
             <ul class="hornav">
-                <li class="current"><a href="#basicform">图书列表</a></li>
-                <li><a href="#validation">图书添加</a></li>
+                <li class="current"><a href="#basicform">知识点列表</a></li>
+                <li><a href="#validation">知识点添加</a></li>
             </ul>
         </div><!--pageheader-->
         
@@ -68,8 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <th class="head0">书本id</th>
-                                            <th class="head1">书名</th>
+                                            <th class="head0">知识点id</th>
+                                            <th class="head1">知识点名称</th>
                                             <th class="head0" colspan="2">操作</th>
                                         </tr>
                                     </thead>
@@ -105,12 +105,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <form class="stdform" action="" method="post">
                         <p>
                         	<label>书名</label>
-                            <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
-                        </p>
+                 			    <span class="formwrapper">
+                            	<select data-placeholder="选择书本..." class="chzn-select" style="width:350px;" tabindex="2">
+                           </select>
+                           </span>
+                               </p>
                         
                         <p>
                         	<label>章节名称</label>
-                            <span class="field"><input type="text" name="lastname" id="lastname" class="longinput" /></span>
+                           <span class="formwrapper">
+                            	<select data-placeholder="选择章节..." class="chzn-select" style="width:350px;" tabindex="2">
+                           </select>
+                           </span>
+                             </p>
+                          <p>
+                        	<label>知识点名称</label>
+                            <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
                         </p>
                         <p class="stdformbutton">
                         	<button class="submit radius2">提交</button>

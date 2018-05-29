@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -67,19 +68,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <col class="con0" />
                                     </colgroup>
                                     <thead>
-                                        <tr>
+                                      
+                                      <tr>
                                             <th class="head0">书本id</th>
                                             <th class="head1">书名</th>
                                             <th class="head0" colspan="2">操作</th>
-                                        </tr>
+                                        </tr> 
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                    <c:if test="${!empty books }">  
+                                       <c:forEach items="${books}" var="b">  
+                                          <tr>  
+                                            <td>${b.bId}</td>  
+                                            <td>${b.bName}</td>  
+                                              <td>  
+                                           <a href="<%=basePath%>book/selectB?id=${b.bId}">编辑</a>  
+                                            <a href="<%=basePath%>book/deleteB?id=${b.bId}">删除</a>  
+                                          </td>  
+                                         </tr>               
+                                        </c:forEach>  
+                                        </c:if> 
+                                       <!--  <tr>
                                             <td>01/12/12</td>
                                             <td>10</td>
                                             <td><a>修改</a></td>
                                             <td><a>删除</a></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div><!--widgetcontent-->
@@ -89,20 +103,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="pagination pagination2">
                     	<li class="first"><a href="" class="disable">&laquo;</a></li>
                         <li class="previous"><a href="" class="disable">&lsaquo;</a></li>
-                    	<li><a href="" class="current">1</a></li>
+                    	<!-- <li><a href="" class="current">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">4</a></li>
                         <li><a href="">5</a></li>
                         <li class="next"><a href="">&rsaquo;</a></li>
-                        <li class="last"><a href="">&raquo;</a></li>
+                        <li class="last"><a href="">&raquo;</a></li> -->
+                        <c:if test="${!empty books }">  
+                                       <c:forEach items="${books}" var="b">  
+                                            <li><a href="">${b.bName}</a></li>            
+                                        </c:forEach>  
+                        </c:if>  
                     </ul>
                     <br />
       </div><!--subcontent-->
          
          
             <div id="validation" class="subcontent" style="display: none">
-                   <form class="stdform" action="" method="post">
+                   <form class="stdform" action="<%=basePath%>book/insertB" method="post">
                         <p>
                         	<label>书名</label>
                             <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
@@ -110,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         
                    
                         <p class="stdformbutton">
-                        	<button class="submit radius2">提交</button>
+                        	<button class="submit radius2" style="width: 55px; ">提交</button>
                         </p>
                   </form>
          </div><!--subcontent-->

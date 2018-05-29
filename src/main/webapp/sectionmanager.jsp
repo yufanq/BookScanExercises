@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -69,17 +70,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <thead>
                                         <tr>
                                             <th class="head0">章节id</th>
+                                            <th class="head1">章节编号</th>
                                             <th class="head1">章节名称</th>
                                             <th class="head0" colspan="2">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                       <!--  <tr>
                                             <td>01/12/12</td>
                                             <td>10</td>
                                             <td><a>修改</a></td>
                                             <td><a>删除</a></td>
-                                        </tr>
+                                        </tr> -->
+                                         <c:if test="${!empty chapters}">  
+                                       <c:forEach items="${chapters}" var="c">  
+                                          <tr>  
+                                            <td>${c.cId}</td>
+                                            <td>${c.cNumber}</td>    
+                                            <td>${c.cName}</td>  
+                                              <td>  
+                                           <a href="<%=basePath%>chapter/selectC?id=${c.cId}">编辑</a>  
+                                            <a href="<%=basePath%>chapter/deleteC?id=${c.cId}">删除</a>  
+                                          </td>  
+                                         </tr>               
+                                        </c:forEach>  
+                                        </c:if>  
                                     </tbody>
                                 </table>
                             </div><!--widgetcontent-->
@@ -89,32 +104,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="pagination pagination2">
                     	<li class="first"><a href="" class="disable">&laquo;</a></li>
                         <li class="previous"><a href="" class="disable">&lsaquo;</a></li>
-                    	<li><a href="" class="current">1</a></li>
+                         <c:if test="${!empty chapters }">  
+                                       <c:forEach items="${chapters}" var="c">  
+                                            <li><a href="">${c.cName}</a></li>            
+                                        </c:forEach>  
+                        </c:if>  
+                    	<!-- <li><a href="" class="current">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">4</a></li>
                         <li><a href="">5</a></li>
                         <li class="next"><a href="">&rsaquo;</a></li>
-                        <li class="last"><a href="">&raquo;</a></li>
+                        <li class="last"><a href="">&raquo;</a></li> -->
                     </ul>
                     <br />
       </div><!--subcontent-->
          
          
             <div id="validation" class="subcontent" style="display: none">
-                   <form class="stdform" action="" method="post">
+                   <form class="stdform" action="<%=basePath%>chapter/insertC" method="post">
                       	<p>
                       	<label>书名</label>
                  			    <span class="formwrapper">
-                            	<select data-placeholder="选择书本..." class="chzn-select" style="width:350px;" tabindex="2">
+                           <select data-placeholder="选择书本..." class="chzn-select" style="width:350px;" tabindex="2">
+                           <c:if test="${!empty books }">  
+                                       <c:forEach items="${books}" var="b">  
+                                             <option value="${b.bId}">${b.bName}</option>         
+                                        </c:forEach>  
+                        </c:if>  
                            </select>
                            </span>
                                </p>
                         <p>
-                        	<label>章节名称</label>
-                            <span class="field"><input type="text" name="firstname" id="firstname" class="longinput" /></span>
+                        	<label>章节编号</label>
+                            <span class="field"><input type="text" name="number" id="firstname" class="longinput" /></span>
                         </p>
-                        
+                         <p>
+                        	<label>章节名称</label>
+                            <span class="field"><input type="text" name="ctname" id="firstname" class="longinput" /></span>
+                        </p>
                    
                         <p class="stdformbutton">
                         	<button class="submit radius2">提交</button>

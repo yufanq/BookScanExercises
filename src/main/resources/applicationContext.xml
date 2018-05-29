@@ -11,7 +11,7 @@
                              http://www.springframework.org/schema/tx
                               http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
                            ">
-    <context:component-scan base-package="com.serviceimpl"></context:component-scan>      
+    <context:component-scan base-package="com.bse.serviceimpl,com.bse.service"></context:component-scan>      
 			<!--  识别jdbc.properties 文件  -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
@@ -37,15 +37,15 @@
 			<ref local="dataSource" />
 		</property>
 		<!-- 配置实体所在的包 可以直接使用类名 操作 而不需要写权限定名 -->
-		<property name="mapperLocations" value="classpath:/com/mapper/*Mapper.xml"></property>
+		<property name="mapperLocations" value="classpath:/com/bse/IdaoMapper/*Mapper.xml"></property>
 		<!-- Mapper文件放置的文件夹 -->
-		<property name="typeAliasesPackage" value="com.entity"/>
+		<property name="typeAliasesPackage" value="com.bse.entity"/>
 	</bean>
 	<bean id="mapperConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/> 
 		<!-- 接口所放置的包 -->
 		<property name="basePackage">
-			<value>com.dao</value>  
+			<value>com.bse.Idao</value>  
 		</property>
 	</bean>
 	<!--配置额外功能事务 -->

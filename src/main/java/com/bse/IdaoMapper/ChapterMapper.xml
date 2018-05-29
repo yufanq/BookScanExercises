@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bse.Idao.IChapterDao">
+ <resultMap id="BaseResultMap" type="com.bse.entity.Chapter" >
+    <id column="c_id" property="cId" jdbcType="INTEGER" />
+    <result column="c_number" property="cNumber" jdbcType="INTEGER" />
+    <result column="c_name" property="cName" jdbcType="VARCHAR" />
+    <result column="b_id" property="bId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c_id, c_number, c_name, b_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from chapter
+    where c_id = #{cId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chapter
+    where c_id = #{cId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bse.entity.Chapter" >
+    insert into chapter (c_id, c_number, c_name, 
+      b_id)
+    values (#{cId,jdbcType=INTEGER}, #{cNumber,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, 
+      #{bId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bse.entity.Chapter" >
+    insert into chapter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        c_id,
+      </if>
+      <if test="cNumber != null" >
+        c_number,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+      <if test="bId != null" >
+        b_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cId != null" >
+        #{cId,jdbcType=INTEGER},
+      </if>
+      <if test="cNumber != null" >
+        #{cNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="bId != null" >
+        #{bId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bse.entity.Chapter" >
+    update chapter
+    <set >
+      <if test="cNumber != null" >
+        c_number = #{cNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null" >
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="bId != null" >
+        b_id = #{bId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bse.entity.Chapter" >
+    update chapter
+    set c_number = #{cNumber,jdbcType=INTEGER},
+      c_name = #{cName,jdbcType=VARCHAR},
+      b_id = #{bId,jdbcType=INTEGER}
+    where c_id = #{cId,jdbcType=INTEGER}
+  </update>
+	<select id="selectAll" resultType="Chapter">
+		select * from profession_book where b_id=#{id};
+	</select>
+	
+	<delete id="deleteC" parameterType="java.lang.Integer">
+		delete from chapter
+		where c_id = #{cId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertC" parameterType="Chapter">
+		insert into chapter (c_id, c_name, b_id,c_number
+		)
+		values (#{cId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR},
+		#{bId,jdbcType=INTEGER},#{cNumber}
+		)
+	</insert>
+	
+	<update id="updateC" parameterType="Chapter">
+		update chapter
+		set c_name = #{cName,jdbcType=VARCHAR},
+		c_number = #{cNumber,jdbcType=INTEGER}
+		where c_id = #{cId,jdbcType=INTEGER}
+	</update>
+</mapper>

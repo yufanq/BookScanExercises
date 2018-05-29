@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -67,6 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <col class="con0" />
                                     </colgroup>
                                     <thead>
+                                    
                                         <tr>
                                             <th class="head0">专业id</th>
                                             <th class="head1">专业名称</th>
@@ -74,12 +76,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                     <c:if test="${!empty professions }">  
+                                       <c:forEach items="${professions}" var="p">  
+                                          <tr>  
+                                            <td>${p.pId}</td>  
+                                            <td>${p.pName}</td>  
+                                              <td>  
+                                           <a href="<%=basePath%>profession/updateP?id=${p.pId}">编辑</a>  
+                                            <a href="<%=basePath%>profession/deleteP?id=${p.pId}">删除</a>  
+                                          </td>  
+                                         </tr>               
+                                        </c:forEach>  
+                                        </c:if>  
+                                        <!-- <tr>
                                             <td>01/12/12</td>
                                             <td>10</td>
                                             <td><a>修改</a></td>
                                             <td><a>删除</a></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div><!--widgetcontent-->
@@ -89,11 +103,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul class="pagination pagination2">
                     	<li class="first"><a href="" class="disable">&laquo;</a></li>
                         <li class="previous"><a href="" class="disable">&lsaquo;</a></li>
-                    	<li><a href="" class="current">1</a></li>
+                        <c:if test="${!empty professions }">  
+                                       <c:forEach items="${professions}" var="p">  
+                                            <li><a href="">${p.pName}</a></li>            
+                                        </c:forEach>  
+                        </c:if>  
+                    	<!-- <li><a href="" class="current">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
+                        <li><a href="">5</a></li> -->
                         <li class="next"><a href="">&rsaquo;</a></li>
                         <li class="last"><a href="">&raquo;</a></li>
                     </ul>
@@ -102,14 +121,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
          
             <div id="validation" class="subcontent" style="display: none">
-                   <form class="stdform" action="" method="post">
+                   <form class="stdform" action="<%=basePath%>profession/insertPB?pid=${p.pId}&bid=${b.bId}" method="post">
                          <p>
                         	<label>专业选择</label>
                         	   <span class="formwrapper">
                             	<select data-placeholder="选择专业" class="chzn-select" style="width:350px;" tabindex="2">
-                                <option value="">专业 One</option>
+                            	<c:if test="${!empty professions }">  
+                                       <c:forEach items="${professions}" var="p">  
+                                            <option value="${p.pId}">${p.pName}</option>        
+                                        </c:forEach>  
+                        </c:if> 
+                               <!--  <option value="">专业 One</option>
                                 <option value="">专业 Two</option>
-                                <option value="">专业 Three</option>
+                                <option value="">专业 Three</option> -->
                             </select>
                             </span>
                         </p>
@@ -117,14 +141,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<label>专业图书选择</label>
                             <span id="dualselect" class="dualselect">
                             	<select class="uniformselect" name="select3" multiple="multiple" size="10">
-                                    <option value="">图书 One</option>
+                            	<c:if test="${!empty books }">  
+                                       <c:forEach items="${books}" var="b">  
+                                            <option value="${b.bId}">${b.bName}o</option><li><a href=""></a></li>            
+                                        </c:forEach>  
+                                </c:if>  
+                                    <!-- <option value="">图书 One</option>
                                     <option value="">图书 Two</option>
                                     <option value="">图书 Three</option>
                                     <option value="">图书 Four</option>
                                     <option value="">图书 Five</option>
                                     <option value="">图书 Six</option>
                                     <option value="">图书 Seven</option>
-                                    <option value="">图书 Eight</option>
+                                    <option value="">图书 Eight</option> -->
                                 </select>
                                 <span class="ds_arrow">
                                 	<span class="arrow ds_prev">&laquo;</span>

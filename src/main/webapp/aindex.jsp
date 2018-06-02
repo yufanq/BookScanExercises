@@ -5,17 +5,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>控制台页面</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/dashboard.js"></script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/plugins/excanvas.min.js"></script><![endif]-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.default.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.flot.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.flot.resize.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/general.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/dashboard.js"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/excanvas.min.js"></script><![endif]-->
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
 <![endif]-->
@@ -23,7 +23,7 @@
     <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
 <![endif]-->
 <!--[if lt IE 9]>
-	<script src="js/plugins/css3-mediaqueries.js"></script>
+	<script src="${pageContext.request.contextPath}/js/plugins/css3-mediaqueries.js"></script>
 <![endif]-->
 </head>
 
@@ -192,7 +192,7 @@
                                         <ul class="entrylist">
                                               <li>
                                                 <div class="entry_wrap">
-                                                    <div class="entry_img"><img src="images/thumbs/image1.png" alt="" /></div>
+                                                    <div class="entry_img"><img src="${pageContext.request.contextPath}/images/thumbs/image1.png" alt="" /></div>
                                                     <div class="entry_content">
                                                         <h4><a href="">Why Won't My Cat Eat?</a></h4>
                                                         <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -203,7 +203,7 @@
                                               </li>
                                               <li class="even">
                                                 <div class="entry_wrap">
-                                                <div class="entry_img"><img src="images/thumbs/image2.png" alt="" /></div>
+                                                <div class="entry_img"><img src="${pageContext.request.contextPath}/images/thumbs/image2.png" alt="" /></div>
                                                 <div class="entry_content">
                                                     <h4><a href="">We Are About Color</a></h4>
                                                     <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -214,7 +214,7 @@
                                               </li>
                                               <li>
                                                 <div class="entry_wrap">
-                                                <div class="entry_img"><img src="images/thumbs/image3.png" alt="" /></div>
+                                                <div class="entry_img"><img src="${pageContext.request.contextPath}/images/thumbs/image3.png" alt="" /></div>
                                                 <div class="entry_content">
                                                     <h4><a href="">Ancient Technology</a></h4>
                                                     <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -225,7 +225,7 @@
                                               </li>
                                               <li class="even">
                                                 <div class="entry_wrap">
-                                                <div class="entry_img"><img src="images/thumbs/image4.png" alt="" /></div>
+                                                <div class="entry_img"><img src="${pageContext.request.contextPath}/images/thumbs/image4.png" alt="" /></div>
                                                 <div class="entry_content">
                                                     <h4><a href="">Bird's Nest Soup</a></h4>
                                                     <small>Submitted by: <a href=""><strong>Hiccup</strong></a> - June 10, 2012</small>
@@ -309,28 +309,28 @@
                             <div class="widgetcontent userlistwidget nopadding">
                                 <ul>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/images/thumbs/avatar1.png" /></div>
                                         <div class="info">
                                             <a href="">Squint</a> <br />
                                             Front-End Engineer <br /> 18 minutes ago
                                         </div><!--info-->
                                     </li>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar2.png" /></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/images/thumbs/avatar2.png" /></div>
                                         <div class="info">
                                             <a href="">Eunice</a> <br />
                                             Architectural Designer <br /> 18 minutes ago
                                         </div><!--info-->
                                     </li>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/images/thumbs/avatar1.png" /></div>
                                         <div class="info">
                                             <a href="">Captain Gutt</a> <br />
                                             Software Engineer <br /> 18 minutes ago
                                         </div><!--info-->
                                     </li>
                                     <li>
-                                        <div class="avatar"><img alt="" src="images/thumbs/avatar2.png" /></div>
+                                        <div class="avatar"><img alt="" src="${pageContext.request.contextPath}/images/thumbs/avatar2.png" /></div>
                                         <div class="info">
                                             <a href="">Flynn</a> <br />
                                             Accounting Manager <br /> 18 minutes ago

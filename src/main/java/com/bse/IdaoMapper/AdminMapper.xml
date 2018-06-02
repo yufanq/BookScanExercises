@@ -1,84 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.bse.Idao.IAdminDao">
-	<resultMap id="BaseResultMap" type="Admin">
-		<id column="a_id" property="aId" jdbcType="INTEGER" />
-		<result column="a_account" property="aAccount" jdbcType="VARCHAR" />
-		<result column="a_password" property="aPassword" jdbcType="VARCHAR" />
-		<result column="a_nickname" property="aNickname" jdbcType="VARCHAR" />
-	</resultMap>
-	<sql id="Base_Column_List">
-		a_id, a_account, a_password, a_nickname
-	</sql>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
-		parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		from admin
-		where a_id = #{aId,jdbcType=INTEGER}
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from admin
-		where a_id = #{aId,jdbcType=INTEGER}
-	</delete>
-	<insert id="insert" parameterType="Admin">
-		insert into admin (a_id, a_account, a_password,
-		a_nickname)
-		values (#{aId,jdbcType=INTEGER}, #{aAccount,jdbcType=VARCHAR},
-		#{aPassword,jdbcType=VARCHAR},
-		#{aNickname,jdbcType=VARCHAR})
-	</insert>
-	<insert id="insertSelective" parameterType="Admin">
-		insert into admin
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="aId != null">
-				a_id,
-			</if>
-			<if test="aAccount != null">
-				a_account,
-			</if>
-			<if test="aPassword != null">
-				a_password,
-			</if>
-			<if test="aNickname != null">
-				a_nickname,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="aId != null">
-				#{aId,jdbcType=INTEGER},
-			</if>
-			<if test="aAccount != null">
-				#{aAccount,jdbcType=VARCHAR},
-			</if>
-			<if test="aPassword != null">
-				#{aPassword,jdbcType=VARCHAR},
-			</if>
-			<if test="aNickname != null">
-				#{aNickname,jdbcType=VARCHAR},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="Admin">
-		update admin
-		<set>
-			<if test="aAccount != null">
-				a_account = #{aAccount,jdbcType=VARCHAR},
-			</if>
-			<if test="aPassword != null">
-				a_password = #{aPassword,jdbcType=VARCHAR},
-			</if>
-			<if test="aNickname != null">
-				a_nickname = #{aNickname,jdbcType=VARCHAR},
-			</if>
-		</set>
-		where a_id = #{aId,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="Admin">
-		update admin
-		set a_account = #{aAccount,jdbcType=VARCHAR},
-		a_password = #{aPassword,jdbcType=VARCHAR},
-		a_nickname = #{aNickname,jdbcType=VARCHAR}
-		where a_id = #{aId,jdbcType=INTEGER}
-	</update>
+<mapper namespace="com.bse.Idao.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.bse.entity.Admin" >
+    <id column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="a_account" property="aAccount" jdbcType="VARCHAR" />
+    <result column="a_password" property="aPassword" jdbcType="VARCHAR" />
+    <result column="a_pwdadd" property="aPwdadd" jdbcType="VARCHAR" />
+    <result column="a_nickname" property="aNickname" jdbcType="VARCHAR" />
+    <collection property="roles" ofType="com.bse.entity.Role">
+    	<id column="r_id" property="rId" jdbcType="INTEGER" />
+    	<result column="r_name" property="rName" jdbcType="VARCHAR" />
+    </collection>
+    <collection property="jurisdictions" ofType="com.bse.entity.Jurisdiction">
+    	<id column="j_id" property="jId" jdbcType="INTEGER" />
+    	<result column="j_name" property="jName" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+  <select id="selectPermissionsAll" resultMap="BaseResultMap">
+  	select a.a_id, a.a_account, a.a_password, a.a_pwdadd, a.a_nickname, r.r_id,r.r_name,j.j_id,j.j_name 
+  	from admin a inner join admin_role ar on a.a_id=ar.a_id inner join role r on r.r_id=ar.r_id
+	inner join role_jurisdiction rj on r.r_id=rj.r_id inner join jurisdiction j on rj.j_id=j.j_id
+	 where a.a_account = #{aAccount}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin
+    where a_id = #{aId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insertSelective" parameterType="com.bse.entity.Admin" useGeneratedKeys="true" keyProperty="a_id">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        a_id,
+      </if>
+      <if test="aAccount != null" >
+        a_account,
+      </if>
+      <if test="aPassword != null" >
+        a_password,
+      </if>
+      <if test="aPwdadd != null" >
+        a_pwdadd,
+      </if>
+      <if test="aNickname != null" >
+        a_nickname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="aAccount != null" >
+        #{aAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="aPassword != null" >
+        #{aPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="aPwdadd != null" >
+        #{aPwdadd,jdbcType=VARCHAR},
+      </if>
+      <if test="aNickname != null" >
+        #{aNickname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bse.entity.Admin" >
+    update admin
+    <set >
+      <if test="aAccount != null" >
+        a_account = #{aAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="aPassword != null" >
+        a_password = #{aPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="aPwdadd != null" >
+        a_pwdadd = #{aPwdadd,jdbcType=VARCHAR},
+      </if>
+      <if test="aNickname != null" >
+        a_nickname = #{aNickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultType="com.bse.entity.Admin">
+    select 
+   a_id aId, a_account aAccount, a_password aPassword, a_pwdadd aPwdadd, a_nickname aNickname
+    from admin limit #{pageIndex},#{pageSize}
+  </select>
+  <select id="selectTotalCount" resultType="int">
+  	select count(*) from admin
+  </select>
 </mapper>

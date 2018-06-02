@@ -30,9 +30,4 @@ public class RoleJurisdiction {
     public void setjId(Integer jId) {
         this.jId = jId;
     }
-
-	@Override
-	public String toString() {
-		return "RoleJurisdiction [rjId=" + rjId + ", rId=" + rId + ", jId=" + jId + "]";
-	}
 }

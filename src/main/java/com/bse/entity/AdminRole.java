@@ -30,9 +30,4 @@ public class AdminRole {
     public void setrId(Integer rId) {
         this.rId = rId;
     }
-
-	@Override
-	public String toString() {
-		return "AdminRole [arId=" + arId + ", aId=" + aId + ", rId=" + rId + "]";
-	}
 }

@@ -10,22 +10,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Forms | Amanda Admin Template</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.default.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.cookie.js"></script>
 
-<script type="text/javascript" src="js/plugins/colorpicker.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.tagsinput.min.js"></script>
-<script type="text/javascript" src="js/plugins/charCount.js"></script>
-<script type="text/javascript" src="js/plugins/ui.spinner.min.js"></script>
-<script type="text/javascript" src="js/plugins/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/forms.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/colorpicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/charCount.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/ui.spinner.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/general.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/forms.js"></script>
 
-<script type="text/javascript" src="js/custom/elements.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/elements.js"></script>
 
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
 <![endif]-->
 <!--[if lt IE 9]>
-	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="${pageContext.request.contextPath}/http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
 </head>
 
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="previous"><a href="" class="disable">&lsaquo;</a></li>
                         <c:if test="${!empty professions }">  
                                        <c:forEach items="${professions}" var="p">  
-                                            <li><a href="">${p.pName}</a></li>            
+                                            <li><a href="">${p.pId}</a></li>            
                                         </c:forEach>  
                         </c:if>  
                     	<!-- <li><a href="" class="current">1</a></li>
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             	<select class="uniformselect" name="select3" multiple="multiple" size="10">
                             	<c:if test="${!empty books }">  
                                        <c:forEach items="${books}" var="b">  
-                                            <option value="${b.bId}">${b.bName}o</option><li><a href=""></a></li>            
+                                            <option value="${b.bId}">${b.bName}</option><li><a href=""></a></li>            
                                         </c:forEach>  
                                 </c:if>  
                                     <!-- <option value="">图书 One</option>

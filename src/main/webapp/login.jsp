@@ -1,17 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF8"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>登录页面</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/login.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.default.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/general.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/login.js"></script>
 <!--[if IE 9]>
     <link rel="stylesheet" media="screen" href="css/style.ie9.css"/>
 <![endif]-->
@@ -19,7 +20,7 @@
     <link rel="stylesheet" media="screen" href="css/style.ie8.css"/>
 <![endif]-->
 <!--[if lt IE 9]>
-	<script src="js/plugins/css3-mediaqueries.js"></script>
+	<script src="${pageContext.request.contextPath}/js/plugins/css3-mediaqueries.js"></script>
 <![endif]-->
 </head>
 
@@ -41,7 +42,7 @@
             <div class="nopassword">
 				<div class="loginmsg">密码不正确.</div>
                 <div class="loginf">
-                    <div class="thumb"><img alt="" src="images/thumbs/avatar1.png" /></div>
+                    <div class="thumb"><img alt="" src="${pageContext.request.contextPath}/images/thumbs/avatar1.png" /></div>
                     <div class="userlogged">
                         <h4></h4>
                         <a href="login.jsp">Not <span></span>?</a> 
@@ -49,11 +50,11 @@
                 </div><!--loginf-->
             </div><!--nopassword-->
             
-            <form id="login" action="index.jsp" method="post">
+            <form id="login" action="${pageContext.request.contextPath}/login" method="post">
             	
                 <div class="username">
                 	<div class="usernameinner">
-                    	<input type="text" name="username" id="username" />
+                    	<input type="text" name="username" id="username" value="<shiro:principal/>">
                     </div>
                 </div>
                 
@@ -68,7 +69,7 @@
                 <div class="keep"><input type="checkbox" /> 记住密码</div>
             
             </form>
-            
+              <div class="error">${error}</div>
         </div><!--loginboxinner-->
     </div><!--loginbox-->
 

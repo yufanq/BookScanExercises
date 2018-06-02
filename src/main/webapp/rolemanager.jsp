@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,20 +10,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Forms | Amanda Admin Template</title>
-<link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.default.css" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.cookie.js"></script>
 
-<script type="text/javascript" src="js/plugins/colorpicker.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.tagsinput.min.js"></script>
-<script type="text/javascript" src="js/plugins/charCount.js"></script>
-<script type="text/javascript" src="js/plugins/ui.spinner.min.js"></script>
-<script type="text/javascript" src="js/plugins/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/forms.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/colorpicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/charCount.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/ui.spinner.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/plugins/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/general.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/custom/forms.js"></script>
 
 <script type="text/javascript" src="js/custom/elements.js"></script>
 
@@ -75,12 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <c:forEach items="${requestScope.roles}" var="role">
                                         <tr>
-                                            <td>01/12/12</td>
-                                            <td>10</td>
+                                            <td>${role.rId}</td>
+                                            <td>${role.rName }</td>
                                             <td><a>修改</a></td>
                                             <td><a>删除</a></td>
                                         </tr>
+                                     </c:forEach>
                                     </tbody>
                                 </table>
                             </div><!--widgetcontent-->
@@ -88,6 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <br />
                     
                     <ul class="pagination pagination2">
+                    	 当前第<strong> ${requestScope.page.pageIndex}</strong> 页，共 <strong>${requestScope.page.pageCount}</strong> 页
                     	<li class="first"><a href="" class="disable">&laquo;</a></li>
                         <li class="previous"><a href="" class="disable">&lsaquo;</a></li>
                     	<li><a href="" class="current">1</a></li>
@@ -142,10 +146,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   </form>
          </div><!--subcontent-->
          <div id="create" class="subcontent" style="display: none">
-                   <form class="stdform" action="" method="post">
+                   <form class="stdform" action="${pageContext.request.contextPath}/role/addRole" method="post">
              			    <p>
                         	<label>角色名称</label>
-                            <span class="field"><input type="text" name="firstname" id="firstname2" class="longinput" /></span>
+                            <span class="field"><input type="text" name="rName" id="firstname2" class="longinput" /></span>
                         </p>
                           <p class="stdformbutton">
                         	<button class="submit radius2">提交</button>

@@ -1,10 +1,26 @@
 package com.bse.entity;
 
-public class Jurisdiction {
-    private Integer jId;
+import java.io.Serializable;
 
-    private String jName;
+public class Jurisdiction implements Serializable{
+    
+	private Integer jId;
 
+	private String jName;
+
+	public Jurisdiction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Jurisdiction [jId=" + jId + ", jName=" + jName + "]";
+	}
+	public Jurisdiction(Integer jId, String jName) {
+		super();
+		this.jId = jId;
+		this.jName = jName;
+	}
     public Integer getjId() {
         return jId;
     }
@@ -20,9 +36,4 @@ public class Jurisdiction {
     public void setjName(String jName) {
         this.jName = jName == null ? null : jName.trim();
     }
-
-	@Override
-	public String toString() {
-		return "Jurisdiction [jId=" + jId + ", jName=" + jName + "]";
-	}
 }

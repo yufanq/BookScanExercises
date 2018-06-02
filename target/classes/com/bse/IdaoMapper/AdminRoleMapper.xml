@@ -1,73 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.bse.Idao.IAdminRoleDao">
-	<resultMap id="BaseResultMap" type="AdminRole">
-		<id column="ar_id" property="arId" jdbcType="INTEGER" />
-		<result column="a_id" property="aId" jdbcType="INTEGER" />
-		<result column="r_id" property="rId" jdbcType="INTEGER" />
-	</resultMap>
-	<sql id="Base_Column_List">
-		ar_id, a_id, r_id
-	</sql>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
-		parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		from admin_role
-		where ar_id = #{arId,jdbcType=INTEGER}
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from admin_role
-		where ar_id = #{arId,jdbcType=INTEGER}
-	</delete>
-	<insert id="insert" parameterType="AdminRole">
-		insert into admin_role (ar_id, a_id, r_id
-		)
-		values (#{arId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER},
-		#{rId,jdbcType=INTEGER}
-		)
-	</insert>
-	<insert id="insertSelective" parameterType="AdminRole">
-		insert into admin_role
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="arId != null">
-				ar_id,
-			</if>
-			<if test="aId != null">
-				a_id,
-			</if>
-			<if test="rId != null">
-				r_id,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="arId != null">
-				#{arId,jdbcType=INTEGER},
-			</if>
-			<if test="aId != null">
-				#{aId,jdbcType=INTEGER},
-			</if>
-			<if test="rId != null">
-				#{rId,jdbcType=INTEGER},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="AdminRole">
-		update admin_role
-		<set>
-			<if test="aId != null">
-				a_id = #{aId,jdbcType=INTEGER},
-			</if>
-			<if test="rId != null">
-				r_id = #{rId,jdbcType=INTEGER},
-			</if>
-		</set>
-		where ar_id = #{arId,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="AdminRole">
-		update admin_role
-		set a_id = #{aId,jdbcType=INTEGER},
-		r_id = #{rId,jdbcType=INTEGER}
-		where ar_id = #{arId,jdbcType=INTEGER}
-	</update>
+<mapper namespace="com.bse.Idao.AdminRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.bse.entity.AdminRole" >
+    <id column="ar_id" property="arId" jdbcType="INTEGER" />
+    <result column="a_id" property="aId" jdbcType="INTEGER" />
+    <result column="r_id" property="rId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ar_id, a_id, r_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin_role
+    where ar_id = #{arId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin_role
+    where ar_id = #{arId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bse.entity.AdminRole" >
+    insert into admin_role (ar_id, a_id, r_id
+      )
+    values (#{arId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{rId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bse.entity.AdminRole" >
+    insert into admin_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="arId != null" >
+        ar_id,
+      </if>
+      <if test="aId != null" >
+        a_id,
+      </if>
+      <if test="rId != null" >
+        r_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="arId != null" >
+        #{arId,jdbcType=INTEGER},
+      </if>
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="rId != null" >
+        #{rId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bse.entity.AdminRole" >
+    update admin_role
+    <set >
+      <if test="aId != null" >
+        a_id = #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="rId != null" >
+        r_id = #{rId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ar_id = #{arId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bse.entity.AdminRole" >
+    update admin_role
+    set a_id = #{aId,jdbcType=INTEGER},
+      r_id = #{rId,jdbcType=INTEGER}
+    where ar_id = #{arId,jdbcType=INTEGER}
+  </update>
 </mapper>

@@ -7,9 +7,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     <div class="vernav2 iconmenu">
     	<ul>
-        	<li><a href="adminmanager.jsp" class="gallery">管理员管理</a></li>
-            <li><a href="rolemanager.jsp" class="widgets">角色管理</a></li>
-            <li><a href="jurisdictionmanager.jsp" class="support">权限管理</a></li>
+        	<li><a href="${pageContext.request.contextPath}/admin/showAdmins" class="gallery">管理员管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/role/showRoles" class="widgets">角色管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/jurisdiction/showJurisdictions" class="support">权限管理</a></li>
         <a class="togglemenu"></a>
         <br /><br />
     </div><!--leftmenu-->

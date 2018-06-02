@@ -7,15 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bse.Idao.IBookDao;
 import com.bse.Idao.IChapterDao;
-import com.bse.Idao.IProfessionDao;
-import com.bse.entity.Book;
 import com.bse.entity.Chapter;
-import com.bse.entity.Profession;
-import com.bse.service.BookService;
 import com.bse.service.ChapterService;
-import com.bse.service.ProfessionService;
 @Service  
 @Transactional 
  

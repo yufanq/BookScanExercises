@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	<li><a href="editprofile.html">编辑资料</a></li>
                         <li><a href="accountsettings.html">账号设置</a></li>
                         <li><a href="help.html">帮助</a></li>
-                        <li><a href="login.html">退出</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logout">退出</a></li>
                     </ul>
                 </div><!--userdata-->
             </div><!--userinfodrop-->
@@ -57,10 +58,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="header">
     	<ul class="headermenu">
-        	<li class="current"><a href="index.jsp"><span class="icon icon-flatscreen"></span>首页</a></li>
-            <li><a href="adminmanager.jsp"><span class="icon icon-pencil"></span>权限管理</a></li>
-            <li><a href="testpapers.jsp"><span class="icon icon-message"></span>试卷管理</a></li>
-            <li><a href="reports.html"><span class="icon icon-chart"></span>统计报表</a></li>
+        	<li class="current"><a href="${pageContext.request.contextPath}/index.jsp"><span class="icon icon-flatscreen"></span>首页</a></li>
+        	<shiro:hasRole name="超级管理员"> 
+            <li><a href="${pageContext.request.contextPath}/admin/showAdmins"><span class="icon icon-pencil"></span>权限管理</a></li>
+            </shiro:hasRole>
+            <li><a href="${pageContext.request.contextPath}/paper/selectAllPapersByPage"><span class="icon icon-message"></span>试卷管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/reports.jsp"><span class="icon icon-chart"></span>统计报表</a></li>
         </ul>
       
     </div><!--header-->
